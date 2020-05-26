@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import ArticleCard from './ArticleCard'
 import axios from 'axios';
+import Loading from './Loading';
 
 
 class ArticleList extends Component {
 
 state = {
-    articles: []
+    articles: [],
+    isLoading: true
 }
 
 componentDidMount() {
@@ -17,11 +19,12 @@ fetchArticles() {
     console.log(this.props)
     axios.get('https://ethans-first-app.herokuapp.com/api/articles')
     .then(({ data }) => {
-        this.setState({ articles: data.articles})
+        this.setState({ articles: data.articles, isLoading: false})
     })
 }
 
     render() {
+        if (this.state.isLoading) return <Loading />
         return (
             <main className="AllArticles">
                     {this.state.articles.map((article) => {
