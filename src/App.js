@@ -13,7 +13,7 @@ state = {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Header user={this.state.user}/>
         <NavBar />
         <Router>

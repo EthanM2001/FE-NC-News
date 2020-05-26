@@ -29,9 +29,9 @@ state = {
 }
     render() {
         return (
-            <main >
+            <main className="AllArticles">
                     {this.state.articles.map((article) => {
-                        return <ArticleCard  key={article.article_id} {...article}/>
+                        return <ArticleCard key={article.article_id} {...article}/>
                     })}
             </main>
         );

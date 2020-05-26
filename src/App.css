@@ -1,7 +1,25 @@
+.App {
+  display: grid;
+  grid-template-columns: 200px auto 10px
+}
+
 .header {
-border: 2px solid purple
+  text-align: center;
+  border: 2px solid purple;
+  grid-column-start: 2;
+  
+}
+
+.login {
+  text-align: right;
 }
 
 .nav {
-  border: 2px solid green
+  border: 2px solid green;
+  grid-column-start: 1;
+}
+
+.eachArticle {
+  border: 2px solid red;
+  grid-column-start: auto;
 }
