@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from '@reach/router'
 
 class NavBar extends Component {
 
@@ -8,6 +9,10 @@ state = {
 }
 
 componentDidMount() {
+    this.fetchTopics()
+}
+
+fetchTopics = () => {
     axios
     .get('https://ethans-first-app.herokuapp.com/api/topics')
     .then(({ data }) => {
@@ -18,8 +23,9 @@ componentDidMount() {
     render() {
         return (
         <ul>
-            {this.state.topics.map((topic) => {
-                return <li key={topic.slug}>{topic.slug}</li>
+            <li><Link to="/">Home</Link></li>
+            {this.state.topics.map(({slug}) => {
+                return <li key={slug}><Link to={`/topics/${slug}`}>{slug}</Link></li>
             })}
         </ul>
         );
