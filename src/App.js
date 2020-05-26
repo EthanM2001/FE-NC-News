@@ -18,6 +18,7 @@ state = {
         <NavBar />
         <Router>
           <ArticleList path="/"/>
+          <ArticleList path="articles/:article_id" />
         </Router>
       </div>
     );
