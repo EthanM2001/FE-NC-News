@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = (props) => {
     return (
-        <header>
+        <header className='header'>
             <h1>NC-News</h1>
             <h2>Go and explore!
                 <span role="img" aria-label="compass">🧭</span>
