@@ -1,6 +1,6 @@
 .App {
   display: grid;
-  grid-template-columns: 200px auto 10px
+  grid-template-columns: 200px auto
 }
 
 .header {
@@ -22,4 +22,9 @@
 .eachArticle {
   border: 2px solid red;
   grid-column-start: auto;
+  text-align: center;
+}
+
+.votes {
+  text-align: left;
 }
