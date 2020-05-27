@@ -25,7 +25,7 @@ fetchTopics = () => {
         <nav className="nav">
             <li><Link to="/">Home</Link></li>
             {this.state.topics.map(({slug}) => {
-                return <li key={slug}><Link to={`/topics/${slug}`}>{slug.charAt(0).toUpperCase() + slug.slice(1)}</Link></li>
+                return <li key={slug}><Link to={`/topics/${slug}`}>{slug}</Link></li>
             })}
         </nav>
         );

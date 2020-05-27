@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ArticleCard from './ArticleCard'
-import axios from 'axios';
+import * as api from '../utils/api';
 import Loading from './Loading';
 
 
@@ -11,17 +11,18 @@ state = {
     isLoading: true
 }
 
-componentDidMount() {
-    this.fetchArticles()
-}
-
-fetchArticles() {
-    console.log(this.props)
-    axios.get('https://ethans-first-app.herokuapp.com/api/articles')
-    .then(({ data }) => {
-        this.setState({ articles: data.articles, isLoading: false})
+    
+fetchArticles = () => {
+    api.getArticles()
+    .then((articles) => {
+        this.setState({ articles, isLoading: false})
     })
 }
+
+componentDidMount() {
+    this.fetchArticles();
+}
+
 
     render() {
         if (this.state.isLoading) return <Loading />
