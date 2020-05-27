@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router'
+import VoteIncrementer from './VoteIncrementer';
 
 const ArticleCard = ({article_id, title, votes, topic, author, created_at, comment_count}) => {
 
@@ -10,7 +11,7 @@ const ArticleCard = ({article_id, title, votes, topic, author, created_at, comme
             {author}<br></br>
             {new Date(created_at).toLocaleDateString()}<br></br>
             Total Comments: {comment_count}</h4>
-            <p>{votes}</p>
+            <VoteIncrementer votes={votes} />
         </article>
     );
 };
