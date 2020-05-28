@@ -25,7 +25,7 @@ render() {
         const { inc_votes } = this.state;
         return (
             <>
-            <button onClick={this.handleIncrement}>
+            <button onClick={this.handleIncrement} disabled={inc_votes !== 0}>
                 <span role="img" aria-label="increment">
                     👆
                 </span>
