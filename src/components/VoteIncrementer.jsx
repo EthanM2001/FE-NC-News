@@ -8,15 +8,37 @@ state = {
 };
 
 handleIncrement = (event) => {
-    // SETTING STATE OPTIMISTICALLY
     this.setState(({ inc_votes }) => {
         return {
             inc_votes: inc_votes + 1,
         }
     })
-    // MAKING API REQUEST
     const { article_id } = this.props;
     api.patchVotesById(article_id)
+    .catch((err) => {
+        this.setState(({ inc_votes}) => {
+            return {
+                inc_votes: inc_votes - 1
+            }
+        })
+    })
+}
+
+handleDecrement = (event) => {
+    this.setState(({ inc_votes }) => {
+        return {
+            inc_votes: inc_votes - 1,
+        }
+    })
+    const { article_id } = this.props;
+    api.patchVotesById(article_id)
+    .catch((err) => {
+        this.setState(({ inc_votes}) => {
+            return {
+                inc_votes: inc_votes + 1
+            }
+        })
+    })
 }
 
 
@@ -31,6 +53,11 @@ render() {
                 </span>
             </button>
             <p>Votes: {votes + inc_votes}</p>
+            <button onClick={this.handleDecrement} disabled = {inc_votes !== 0}>
+                <span role="img" aria-label="decrement">
+                    👇
+                </span>
+            </button>
             </>
         );
     }
