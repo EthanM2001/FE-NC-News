@@ -1,12 +1,16 @@
 import axios from 'axios'
 
-export const getArticles = () => {
+
+export const getArticles = (topic) => {
    return axios
-    .get('https://ethans-first-app.herokuapp.com/api/articles')
+    .get('https://ethans-first-app.herokuapp.com/api/articles', {
+        params: {topic}
+    })
     .then(({ data: { articles } }) => {
         return articles
     })
 }
+
 
 export const getArticleById = (article_id) => {
     return axios

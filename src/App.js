@@ -20,6 +20,7 @@ state = {
         <NavBar />
         <Router>
           <ArticleList path="/"/>
+          <ArticleList path="/topics/:topic" />
           <ArticleById path="/articles/:article_id" />
           <CommentList path="/articles/:article_id/comments" />
         </Router>
