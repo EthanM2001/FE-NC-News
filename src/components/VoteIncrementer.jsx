@@ -16,7 +16,7 @@ handleIncrement = (event) => {
     const { article_id } = this.props;
     api.patchVotesById(article_id)
     .catch((err) => {
-        this.setState(({ inc_votes}) => {
+        this.setState(({ inc_votes }) => {
             return {
                 inc_votes: inc_votes - 1
             }

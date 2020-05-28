@@ -7,7 +7,7 @@ class CommentList extends Component {
 
 
 state = {
-    comments:[],
+    comments: [],
     isLoading: true,
 }
 
