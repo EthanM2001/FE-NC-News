@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import * as api from '../utils/api';
 import CommentList from './CommentList';
-import VoteIncrementer from './VoteIncrementer';
 
 class ArticleById extends Component {
 
@@ -26,7 +25,7 @@ fetchArticleById = () => {
 
 
     render() {
-        const { title, author, body, topic, comment_count, created_at, votes } = this.state.articleById
+        const { title, author, body, topic, comment_count, created_at } = this.state.articleById
         if (this.state.isLoading) return <Loading />
         return (
             <article>
@@ -34,7 +33,6 @@ fetchArticleById = () => {
                 <p className="articleDescription">This article was written by {author} on {new Date(created_at).toLocaleDateString()} and has {comment_count} comments.</p>
                 <p className="articleBody">{body}</p>
                 <CommentList article_id={this.props.article_id} />
-                <VoteIncrementer article_id={this.props.article_id} votes={votes} />
             </article>
         );
     }

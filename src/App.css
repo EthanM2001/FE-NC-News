@@ -10,6 +10,20 @@
   
 }
 
+.form {
+  border: 2px solid yellow;
+  text-align: center;
+}
+
+.body {
+  width: 50%;
+  height:200px;
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0.4em;
+  padding-left: 0.4em
+}
+
 .login {
   text-align: right;
 }
