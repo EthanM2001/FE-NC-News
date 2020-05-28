@@ -28,3 +28,19 @@
 .votes {
   text-align: left;
 }
+
+.articleHeader {
+  border: 2px solid black
+}
+
+.articleDescription {
+  border: 2px solid peru
+}
+
+.articleBody {
+  border: 2px solid red
+}
+
+.eachComment {
+  border: 2px solid lightslategray
+}

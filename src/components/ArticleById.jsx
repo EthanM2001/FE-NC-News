@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loading from './Loading';
 import * as api from '../utils/api';
+import CommentList from './CommentList';
 
 class ArticleById extends Component {
 
@@ -24,13 +25,14 @@ fetchArticleById = () => {
 
 
     render() {
-        const { title, author, body, topic, votes, comment_count, created_at } = this.state.articleById
+        const { title, author, body, topic, comment_count, created_at } = this.state.articleById
         if (this.state.isLoading) return <Loading />
         return (
             <article>
-                <h1>{title}<br></br>{topic}</h1>
-                <p>This article was written by {author} on {new Date(created_at).toLocaleDateString()} and has {comment_count} comments.</p>
-                <p>{body}<br></br>{votes}</p>
+                <h1 className="articleHeader">{title}<br></br>{topic}</h1>
+                <p className="articleDescription">This article was written by {author} on {new Date(created_at).toLocaleDateString()} and has {comment_count} comments.</p>
+                <p className="articleBody">{body}</p>
+                <CommentList article_id={this.props.article_id} />
                 
             </article>
         );

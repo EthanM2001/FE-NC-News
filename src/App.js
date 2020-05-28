@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import { Router } from '@reach/router';
 import ArticleList from './components/ArticleList';
 import ArticleById from './components/ArticleById';
+import CommentList from './components/CommentList';
 
 class App extends Component {
 
@@ -19,7 +20,8 @@ state = {
         <NavBar />
         <Router>
           <ArticleList path="/"/>
-          <ArticleById path="articles/:article_id" />
+          <ArticleById path="/articles/:article_id" />
+          <CommentList path="/articles/:article_id/comments" />
         </Router>
       </div>
     );

@@ -8,7 +8,7 @@ class ArticleList extends Component {
 
 state = {
     articles: [],
-    isLoading: true
+    isLoading: true,
 }
 
     
@@ -37,11 +37,3 @@ componentDidMount() {
 }
 
 export default ArticleList;
-
-// Want to click on title and takes you to that article with the articles id in the url... e.g. /articles/2
-
-// Make title a Link Component inside ArticleCard. 
-// to property of /articles/:article_id
-// put articles_id into url
-
-// When clicking on a topic, articles should be filtered with that topic... 
