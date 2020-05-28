@@ -11,7 +11,7 @@ const ArticleCard = ({article_id, title, votes, topic, author, created_at, comme
             {author}<br></br>
             {new Date(created_at).toLocaleDateString()}<br></br>
             Total Comments: {comment_count}</h4>
-            <VoteIncrementer votes={votes} />
+            <VoteIncrementer votes={votes} article_id={article_id}/>
         </article>
     );
 };

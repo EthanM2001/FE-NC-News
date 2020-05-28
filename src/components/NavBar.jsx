@@ -33,3 +33,8 @@ fetchTopics = () => {
 }
 
 export default NavBar;
+
+// implement comments
+// delete a comment
+// post a comment
+// topics working

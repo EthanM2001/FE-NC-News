@@ -15,3 +15,11 @@ export const getArticleById = (article_id) => {
             return article
         })
 }
+
+export const patchVotesById = (article_id, inc_votes) => {
+    return axios
+    .patch(`https://ethans-first-app.herokuapp.com/api/articles/${article_id}`, {inc_votes: 1})
+    .then(({data : { articles}}) => {
+        return articles.votes
+    })
+}

@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
+import * as api from '../utils/api';
 
 class VoteIncrementer extends Component {
 
 state = {
-    userVotes: 0,
+    inc_votes: 0,
 };
 
-    render() {
-        const { votes } = this.props;
-        const { userVotes } = this.state
+handleIncrement = (event) => {
+    // SETTING STATE OPTIMISTICALLY
+    this.setState(({ inc_votes }) => {
+        return {
+            inc_votes: inc_votes + 1,
+        }
+    })
+    // MAKING API REQUEST
+    const { article_id } = this.props;
+    api.patchVotesById(article_id)
+}
+
+
+render() {
+    const { votes } = this.props;
+        const { inc_votes } = this.state;
         return (
             <>
-            <button>
+            <button onClick={this.handleIncrement}>
                 <span role="img" aria-label="increment">
                     👆
                 </span>
             </button>
-            <p>Votes: {votes + userVotes}</p>
+            <p>Votes: {votes + inc_votes}</p>
             </>
         );
     }
