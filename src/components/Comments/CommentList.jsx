@@ -31,8 +31,19 @@ class CommentList extends Component {
           isLoading: false,
         });
       })
-      .catch((err) => {console.dir(err)});
   };
+
+  deleteComment = (comment_id) => {
+    api.deleteCommentById(comment_id).then(() => {
+      this.setState((currentState) => {
+        const removeCommentFromState = currentState.comments.filter((comment) => {
+          console.log(comment)
+          return comment_id !== comment.comment_id
+        })
+        return {comments: removeCommentFromState}
+    })
+    })
+  }
 
   render() {
     const { username, article_id } = this.props;
@@ -41,21 +52,21 @@ class CommentList extends Component {
     return (
         <>
       <main>
-          <ul>
           <CommentAdder
             username={username}
             article_id={article_id}
             addCommentToArticle={this.addCommentToArticle}
-          />
+            />
           {comments.map((comment) => {
-            return <li key={comment.comment_id}>
-            <CommentCard
-                {...comment}
-                user={this.props.user}
+            return (
+              <CommentCard
+              key={comment.comment_id}
+              {...comment}
+              username={this.props.username}
+              deleteComment={this.deleteComment}
               />
-              </li>
-          })}
-          </ul>
+              )
+            })}
       </main>
       </>
     );

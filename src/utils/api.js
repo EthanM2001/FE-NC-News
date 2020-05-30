@@ -3,11 +3,12 @@ import axios from "axios";
 export const getArticles = (topic) => {
   return axios
     .get("https://ethans-first-app.herokuapp.com/api/articles", {
-      params: { topic },
+      params: { topic: topic  },
     })
     .then(({ data: { articles } }) => {
+      console.log(articles)
       return articles;
-    });
+    })
 };
 
 export const getArticleById = (article_id) => {
@@ -40,11 +41,16 @@ export const patchVotesById = (article_id) => {
 };
 
 export const postComment = (article_id, username, body) => {
-  return axios.post(
-    `https://ethans-first-app.herokuapp.com/api/articles/${article_id}/comments`,
+  return axios
+  .post(`https://ethans-first-app.herokuapp.com/api/articles/${article_id}/comments`,
     {
       username: username,
       body: body,
     }
   );
 };
+
+export const deleteCommentById = (comment_id) => {
+  return axios
+  .delete(`https://ethans-first-app.herokuapp.com/api/comments/${comment_id}`)
+}
