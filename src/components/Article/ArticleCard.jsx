@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router'
-import VoteIncrementer from './VoteIncrementer';
+import VoteIncrementer from '../Resuable/VoteIncrementer';
 
 const ArticleCard = ({article_id, title, votes, topic, author, created_at, comment_count}) => {
 

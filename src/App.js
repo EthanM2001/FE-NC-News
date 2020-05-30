@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import './App.css';
-import Header from './components/Header';
-import NavBar from './components/NavBar';
-import { Router } from '@reach/router';
-import ArticleList from './components/ArticleList';
-import ArticleById from './components/ArticleById';
-import CommentList from './components/CommentList';
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./components/Resuable/Header";
+import NavBar from "./components/Resuable/NavBar";
+import { Router } from "@reach/router";
+import ArticleList from "./components/Article/ArticleList";
+import ArticleById from "./components/Article/ArticleById";
 
 class App extends Component {
-
-state = {
-  user: 'Ethan'
-}
+  state = {
+    username: "cooljmessy",
+  };
 
   render() {
+    const { username } = this.state;
     return (
       <div className="App">
-        <Header user={this.state.user}/>
+        <Header username={username} />
         <NavBar />
         <Router>
-          <ArticleList path="/"/>
+          <ArticleList path="/" />
           <ArticleList path="/topics/:topic" />
-          <ArticleById path="/articles/:article_id" />
-          <CommentList path="/articles/:article_id/comments" />
+          <ArticleById path="/articles/:article_id" username={username} />
         </Router>
       </div>
     );
@@ -30,3 +28,5 @@ state = {
 }
 
 export default App;
+
+// ErrorDisplayer at bottom of router

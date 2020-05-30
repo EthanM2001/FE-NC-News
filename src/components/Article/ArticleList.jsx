@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ArticleCard from './ArticleCard'
-import * as api from '../utils/api';
-import Loading from './Loading';
+import * as api from '../../utils/api';
+import Loading from '../Resuable/Loading';
 
 
 class ArticleList extends Component {
@@ -9,6 +9,7 @@ class ArticleList extends Component {
 state = {
     articles: [],
     isLoading: true,
+    sort_by: ""
 }
     
 fetchArticles = () => {
@@ -27,7 +28,6 @@ componentDidUpdate(prevProps) {
     if (topicHasChanged)
     this.fetchArticles()
 }
-
 
     render() {
         if (this.state.isLoading) return <Loading />

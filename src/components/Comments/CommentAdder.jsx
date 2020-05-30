@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import * as api from '../utils/api'
 
 class CommentAdder extends Component {
 
 state = {
-    username: '',
     body: ''
 }
 
@@ -12,21 +10,19 @@ handleChange = (event) => {
     this.setState({ body: event.target.value })
 }
 
-handleSubmitForm = (event) => {
+handleSubmit = (event) => {
     event.preventDefault();
-    const { username, article_id } = this.props;
+    const { username, article_id, addCommentToArticle } = this.props;
     const { body } = this.state
-    api.postComment(username, article_id, body)
-    .then(() => {
-        this.setState({ username: '', body: ''})
-    })
+    addCommentToArticle(article_id, username, body)
+        this.setState({ body: '' })
 }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
             <textarea
-            onChange = {this.handleInput}
+                onChange = {this.handleChange}
                 value={this.state.body}
                 rows="10"
                 columns="30"
