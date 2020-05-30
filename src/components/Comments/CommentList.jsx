@@ -3,11 +3,13 @@ import Loading from "../Resuable/Loading";
 import CommentCard from "./CommentCard";
 import * as api from "../../utils/api";
 import CommentAdder from "./CommentAdder";
+import ErrorDisplayer from "../Resuable/ErrorDisplayer";
 
 class CommentList extends Component {
   state = {
     comments: [],
     isLoading: true,
+    err: ''
   };
 
   componentDidMount() {
@@ -37,18 +39,21 @@ class CommentList extends Component {
     api.deleteCommentById(comment_id).then(() => {
       this.setState((currentState) => {
         const removeCommentFromState = currentState.comments.filter((comment) => {
-          console.log(comment)
           return comment_id !== comment.comment_id
         })
         return {comments: removeCommentFromState}
     })
     })
+    .catch(err => {
+      this.setState({ err: err.response.data.msg, isLoading: false})
+    })
   }
 
   render() {
     const { username, article_id } = this.props;
-    const { comments } = this.state
-    if (this.state.isLoading) return <Loading />;
+    const { comments, err, isLoading } = this.state
+    if (isLoading) return <Loading />;
+    if (err) return <ErrorDisplayer /> 
     return (
         <>
       <main>

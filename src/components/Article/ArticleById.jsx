@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import Loading from "../Resuable/Loading";
 import * as api from "../../utils/api";
 import CommentList from "../Comments/CommentList";
+import ErrorDisplayer from "../Resuable/ErrorDisplayer";
 
 class ArticleById extends Component {
   state = {
     articleById: {},
     isLoading: true,
+    err: ''
   };
 
   componentDidMount() {
@@ -15,9 +17,13 @@ class ArticleById extends Component {
 
   fetchArticleById = () => {
     const { article_id } = this.props;
-    api.getArticleById(article_id).then((articleById) => {
+    api.getArticleById(article_id)
+    .then((articleById) => {
       this.setState({ articleById, isLoading: false });
-    });
+    })
+    .catch(err => {
+      this.setState({ err: err.response.data.msg, isLoading: false})
+    })
   };
 
   render() {
@@ -30,7 +36,9 @@ class ArticleById extends Component {
       comment_count,
       created_at,
     } = this.state.articleById;
-    if (this.state.isLoading) return <Loading />;
+    const {isLoading, err} = this.state
+    if (isLoading) return <Loading />;
+    if (err) return <ErrorDisplayer />
     return (
       <article>
         <h1 className="articleHeader">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ArticleCard from './ArticleCard'
 import * as api from '../../utils/api';
 import Loading from '../Resuable/Loading';
+import ErrorDisplayer from '../Resuable/ErrorDisplayer';
 
 
 
@@ -10,6 +11,7 @@ class ArticleList extends Component {
 state = {
     articles: [],
     isLoading: true,
+    err: ''
 }
     
 fetchArticles = () => {
@@ -17,6 +19,9 @@ fetchArticles = () => {
     api.getArticles(topic)
     .then((articles) => {
         this.setState({ articles, isLoading: false })
+    })
+    .catch(err => {
+        this.setState({ err: err.response.data.msg, isLoading: false})
     })
 }
 
@@ -31,7 +36,9 @@ componentDidUpdate(prevProps) {
 }
 
     render() {
-        if (this.state.isLoading) return <Loading />
+        const { isLoading, err } = this.state
+        if (isLoading) return <Loading />
+        if (err) return <ErrorDisplayer />
         const { articles } = this.state
         return (
             <>
