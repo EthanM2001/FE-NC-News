@@ -45,7 +45,6 @@ componentDidUpdate(prevProps) {
             <main className="AllArticles">
                 <ul>
                     {articles.map((article) => {
-                        console.log(articles)
                     return <ArticleCard key={article.article_id} {...article} />
                     })}
                 </ul>

@@ -1,19 +1,20 @@
 import axios from "axios";
 
+const baseURL = 'https://ethans-first-app.herokuapp.com/api'
+
 export const getArticles = (topic) => {
   return axios
-    .get("https://ethans-first-app.herokuapp.com/api/articles", {
+    .get(`${baseURL}/articles`, {
       params: { topic: topic  },
     })
     .then(({ data: { articles } }) => {
-      console.log(articles)
       return articles;
     })
 };
 
 export const getArticleById = (article_id) => {
   return axios
-    .get(`https://ethans-first-app.herokuapp.com/api/articles/${article_id}`)
+    .get(`${baseURL}/articles/${article_id}`)
     .then(({ data: { article } }) => {
       return article;
     });
@@ -22,7 +23,7 @@ export const getArticleById = (article_id) => {
 export const getComments = (article_id) => {
   return axios
     .get(
-      `https://ethans-first-app.herokuapp.com/api/articles/${article_id}/comments`
+      `${baseURL}/articles/${article_id}/comments`
     )
     .then(({ data: { comments } }) => {
       return comments;
@@ -32,7 +33,7 @@ export const getComments = (article_id) => {
 export const patchVotesById = (article_id) => {
   return axios
     .patch(
-      `https://ethans-first-app.herokuapp.com/api/articles/${article_id}`,
+      `${baseURL}/articles/${article_id}`,
       { inc_votes: 1 }
     )
     .then(({ data: { articles } }) => {
@@ -42,7 +43,7 @@ export const patchVotesById = (article_id) => {
 
 export const postComment = (article_id, username, body) => {
   return axios
-  .post(`https://ethans-first-app.herokuapp.com/api/articles/${article_id}/comments`,
+  .post(`${baseURL}/articles/${article_id}/comments`,
     {
       username: username,
       body: body,
@@ -52,5 +53,5 @@ export const postComment = (article_id, username, body) => {
 
 export const deleteCommentById = (comment_id) => {
   return axios
-  .delete(`https://ethans-first-app.herokuapp.com/api/comments/${comment_id}`)
+  .delete(`${baseURL}/comments/${comment_id}`)
 }
