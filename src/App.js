@@ -30,5 +30,3 @@ class App extends Component {
 }
 
 export default App;
-
-// ErrorDisplayer at bottom of router
