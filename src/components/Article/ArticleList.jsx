@@ -12,15 +12,15 @@ class ArticleList extends Component {
 state = {
     articles: [],
     isLoading: true,
-    sort_by: "created_at",
     order: "desc",
+    sort_by: null,
     err: ''
 }
     
 fetchArticles = () => {
     const { topic } = this.props;
-    const { sort_by, order } = this.state;
-    api.getArticles(topic, sort_by, order)
+    const { order, sort_by } = this.state;
+    api.getArticles(topic, order, sort_by)
     .then((articles) => {
         this.setState({ articles, isLoading: false })
     })
@@ -31,6 +31,10 @@ fetchArticles = () => {
 
 handleSort = (event) => {
     this.setState({ sort_by: event.target.value })
+}
+
+handleOrder = (event) => {
+    this.setState({ order: event.target.value })
 }
 
 
@@ -55,6 +59,7 @@ componentDidUpdate(prevProps, prevState) {
             <>
             <main className="AllArticles">
                 <Sort handleSort={this.handleSort}/>
+                <button onClick={this.handleOrder}>Order</button>
                 <ul>
                     {articles.map((article) => {
                     return <ArticleCard key={article.article_id} {...article} />
