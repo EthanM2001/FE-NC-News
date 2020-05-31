@@ -21,7 +21,7 @@ handleSubmit = (event) => {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-            <textarea
+            <textarea className="input"
                 onChange = {this.handleChange}
                 value={this.state.body}
                 rows="10"
