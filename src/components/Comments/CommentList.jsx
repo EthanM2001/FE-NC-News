@@ -9,7 +9,8 @@ class CommentList extends Component {
   state = {
     comments: [],
     isLoading: true,
-    err: ''
+    err: '',
+    commentDeleted: false
   };
 
   componentDidMount() {
@@ -41,19 +42,20 @@ class CommentList extends Component {
         const removeCommentFromState = currentState.comments.filter((comment) => {
           return comment_id !== comment.comment_id
         })
-        return {comments: removeCommentFromState}
+        return { comments: removeCommentFromState, commentDeleted: true }
     })
     })
     .catch(err => {
-      this.setState({ err: err.response.data.msg, isLoading: false})
+      this.setState({ err: err.response.data.msg, isLoading: false })
     })
   }
 
   render() {
     const { username, article_id } = this.props;
-    const { comments, err, isLoading } = this.state
+    const { comments, err, isLoading, commentDeleted } = this.state;
     if (isLoading) return <Loading />;
     if (err) return <ErrorDisplayer /> 
+    if (commentDeleted) return <p>Your comment has been deleted!</p>
     return (
         <>
       <main>

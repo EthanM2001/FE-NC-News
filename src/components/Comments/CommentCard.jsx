@@ -12,7 +12,7 @@ const CommentCard = ({
   deleteComment
 }) => {
     return (
-        <article className="eachComment">
+      <article className="eachComment">
       <h2>
         This comment was posted by {author} on{" "}
         {new Date(created_at).toLocaleDateString()}:

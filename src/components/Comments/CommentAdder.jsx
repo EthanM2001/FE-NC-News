@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class CommentAdder extends Component {
 
 state = {
-    body: ''
+    body: '',
+    commentDenied: true
 }
 
 handleChange = (event) => {
@@ -15,10 +16,12 @@ handleSubmit = (event) => {
     const { username, article_id, addCommentToArticle } = this.props;
     const { body } = this.state
     addCommentToArticle(article_id, username, body)
-        this.setState({ body: '' })
+        this.setState({ body: '', commentDenied: false })
 }
 
     render() {
+        const { commentDenied } = this.state;
+        if (!commentDenied) return <p>Your comment has been posted!</p>
         return (
             <>
             <p className="addComment">Add a comment...</p>

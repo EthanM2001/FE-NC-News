@@ -11,7 +11,7 @@
 }
 
 .myName {
-  text-align: left;
+  text-align: right;
 }
 
 .form {
@@ -35,11 +35,9 @@
 .nav {
   grid-column-start: 1;
   list-style-type: none;
-  text-align: center;
-  font-size: 2em;
-  padding-left: 30px;
-  padding-right: 30px;
-  overflow: hidden;
+  text-align: left;
+  font-size: 1.5em;
+  width: 20%;
 }
 
 .eachArticle {
@@ -57,16 +55,19 @@
 .articleHeader {
   border: 2px solid rgb(255, 255, 255);
   text-align: center;
+  font-size: 3em;
+  text-transform: uppercase;
+  color: rgb(211, 211, 211);
 }
 
 .articleDescription {
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .articleBody {
   border: 2px solid rgb(255, 255, 255);
   line-height: 30px;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 .eachComment {

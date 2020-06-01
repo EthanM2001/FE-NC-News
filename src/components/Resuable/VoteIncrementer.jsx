@@ -6,6 +6,7 @@ class VoteIncrementer extends Component {
 state = {
     inc_votes: 0,
     isLoading: true,
+    voteDenied: false
 };
 
 handleVotes = (event) => {
@@ -20,10 +21,13 @@ const inc_votes = event;
     if (article_id) {
         return api.patchVotesById(article_id, inc_votes)
         .catch((err) => {
-            this.setState(({ inc_votes })  => {
+            console.log(err)
+            this.setState(({ inc_votes, voteDenied })  => {
                 return {
                     inc_votes: inc_votes - event,
+                    voteDenied: true
                 }
+            
             })
         })
     }
@@ -31,7 +35,8 @@ const inc_votes = event;
 
 render() {
         const { votes, article_id } = this.props;
-        const { inc_votes } = this.state;
+        const { inc_votes, voteDenied } = this.state;
+        if (voteDenied) return <p>Something went wrong! Please refresh the page...</p>
         return (
             <>
             <button className="IncrementButton" onClick={() => this.handleVotes(1, article_id)} disabled={inc_votes > 0}>
