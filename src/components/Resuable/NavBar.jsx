@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from '@reach/router'
+import { Link } from '@reach/router';
+import * as api from '../../utils/api';
 import ErrorDisplayer from './ErrorDisplayer';
 
 class NavBar extends Component {
@@ -16,8 +16,7 @@ componentDidMount() {
 }
 
 fetchTopics = () => {
-    axios
-    .get('https://ethans-first-app.herokuapp.com/api/topics')
+    api.getTopics()
     .then(({ data }) => {
         this.setState({topics : data.topics})
     })

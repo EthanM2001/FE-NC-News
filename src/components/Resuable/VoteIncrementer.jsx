@@ -7,53 +7,40 @@ state = {
     inc_votes: 0,
 };
 
-handleIncrement = (event) => {
+handleVotes = (event) => {
+    console.log(event)
     this.setState(({ inc_votes }) => {
         return {
-            inc_votes: inc_votes + 1,
+            inc_votes: inc_votes + event
         }
     })
-    const { article_id } = this.props;
-    api.patchVotesById(article_id)
-    .catch((err) => {
-        this.setState(({ inc_votes }) => {
-            return {
-                inc_votes: inc_votes - 1
-            }
-        })
-    })
-}
 
-handleDecrement = (event) => {
-    this.setState(({ inc_votes }) => {
-        return {
-            inc_votes: inc_votes - 1,
-        }
-    })
-    const { article_id } = this.props;
-    api.patchVotesById(article_id)
-    .catch((err) => {
-        this.setState(({ inc_votes}) => {
-            return {
-                inc_votes: inc_votes + 1
-            }
+const { article_id } = this.props;
+const inc_votes = event;
+    if (article_id) {
+        return api.patchVotesById(article_id, inc_votes)
+        .catch((err) => {
+            this.setState(({ inc_votes })  => {
+                return {
+                    inc_votes: inc_votes - event,
+                }
+            })
         })
-    })
+    }
 }
-
 
 render() {
-    const { votes } = this.props;
+        const { votes, article_id } = this.props;
         const { inc_votes } = this.state;
         return (
             <>
-            <button onClick={this.handleIncrement} disabled={inc_votes !== 0}>
+            <button onClick={() => this.handleVotes(1, article_id)} disabled={inc_votes > 0}>
                 <span role="img" aria-label="increment">
                     👆
                 </span>
             </button>
             <p>Votes: {votes + inc_votes}</p>
-            <button onClick={this.handleDecrement} disabled = {inc_votes !== 0}>
+            <button onClick={() => this.handleVotes(-1, article_id)} disabled = {inc_votes < 0}>
                 <span role="img" aria-label="decrement">
                     👇
                 </span>

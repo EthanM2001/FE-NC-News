@@ -20,6 +20,8 @@ handleSubmit = (event) => {
 
     render() {
         return (
+            <>
+            <p className="addComment">Add a comment...</p>
             <form onSubmit={this.handleSubmit}>
             <textarea className="input"
                 onChange = {this.handleChange}
@@ -27,11 +29,12 @@ handleSubmit = (event) => {
                 rows="10"
                 columns="30"
                 type="text"
-                placeholder="Start typing..."
+                placeholder="Add comment here..."
                 required
             />
             <button>Submit!</button>
             </form>
+            </>
         );
     }
 }

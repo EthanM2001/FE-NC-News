@@ -2,6 +2,11 @@ import axios from "axios";
 
 const baseURL = 'https://ethans-first-app.herokuapp.com/api'
 
+export const getTopics = () => {
+  return axios
+    .get(`${baseURL}/topics`)
+}
+
 export const getArticles = (topic, order, sort_by) => {
   return axios
     .get(`${baseURL}/articles`, {
@@ -13,7 +18,6 @@ export const getArticles = (topic, order, sort_by) => {
 };
 
 export const getArticleById = (article_id) => {
-  console.log(article_id)
   return axios
     .get(`${baseURL}/articles/${article_id}`)
     .then(({ data: { article } }) => {
@@ -31,11 +35,11 @@ export const getComments = (article_id) => {
     });
 };
 
-export const patchVotesById = (article_id) => {
+export const patchVotesById = (article_id, inc_votes) => {
   return axios
     .patch(
       `${baseURL}/articles/${article_id}`,
-      { inc_votes: 1 }
+      { inc_votes: inc_votes }
     )
     .then(({ data: { articles } }) => {
       return articles.votes;
