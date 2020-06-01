@@ -34,13 +34,13 @@ render() {
         const { inc_votes } = this.state;
         return (
             <>
-            <button onClick={() => this.handleVotes(1, article_id)} disabled={inc_votes > 0}>
+            <button className="IncrementButton" onClick={() => this.handleVotes(1, article_id)} disabled={inc_votes > 0}>
                 <span role="img" aria-label="increment">
                     Increment: 👆
                 </span>
             </button>
-            <p>Votes: {votes + inc_votes}</p>
-            <button onClick={() => this.handleVotes(-1, article_id)} disabled = {inc_votes < 0}>
+            <p className="pVotes">Votes: {votes + inc_votes}</p>
+            <button className = "DecrementButton" onClick={() => this.handleVotes(-1, article_id)} disabled = {inc_votes < 0}>
                 <span role="img" aria-label="decrement">
                     Decrement: 👇
                 </span>

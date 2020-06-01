@@ -10,6 +10,10 @@
   grid-column-start: 2;
 }
 
+.myName {
+  text-align: left;
+}
+
 .form {
   border: 2px solid yellow;
   text-align: center;
@@ -35,6 +39,7 @@
   font-size: 2em;
   padding-left: 30px;
   padding-right: 30px;
+  overflow: hidden;
 }
 
 .eachArticle {
@@ -42,6 +47,7 @@
   text-decoration: underline;
   grid-column-start: auto;
   text-align: center;
+  width: 45%;
 }
 
 .votes {
@@ -77,5 +83,11 @@
 
 .topicsList {
   list-style: none;
-  
+}
+
+.articleList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }

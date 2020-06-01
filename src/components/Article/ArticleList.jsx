@@ -59,7 +59,7 @@ componentDidUpdate(prevProps, prevState) {
             <main className="AllArticles">
                 <Sort handleSort={this.handleSort}/>
                 <Order handleOrder={this.handleOrder}/>
-                <ul>
+                <ul className="articleList">
                     {articles.map((article) => {
                     return <ArticleCard key={article.article_id} {...article} />
                     })}
