@@ -4,6 +4,7 @@ import * as api from '../../utils/api';
 import Loading from '../Resuable/Loading';
 import ErrorDisplayer from '../Resuable/ErrorDisplayer';
 import Sort from '../Resuable/Sort';
+import Order from '../Resuable/Order';
 
 
 
@@ -59,7 +60,7 @@ componentDidUpdate(prevProps, prevState) {
             <>
             <main className="AllArticles">
                 <Sort handleSort={this.handleSort}/>
-                <button onClick={this.handleOrder}>Order</button>
+                <Order handleOrder={this.handleOrder}/>
                 <ul>
                     {articles.map((article) => {
                     return <ArticleCard key={article.article_id} {...article} />
