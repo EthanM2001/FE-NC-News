@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from '@reach/router'
+import { Link } from '@reach/router'
+import ErrorDisplayer from './ErrorDisplayer';
 
 class NavBar extends Component {
 
 state = {
     topics: [],
+    isLoading: true,
+    err: ''
 }
 
 componentDidMount() {
@@ -18,9 +21,14 @@ fetchTopics = () => {
     .then(({ data }) => {
         this.setState({topics : data.topics})
     })
+    .catch(err => {
+        this.setState({ err: err.response.data.msg, isLoading: false})
+    })
 }
 
     render() {
+        const { err } = this.state
+        if (err) return <ErrorDisplayer />
         return (
         <nav className="nav">
             <li><Link to="/">Home</Link></li>
@@ -33,8 +41,3 @@ fetchTopics = () => {
 }
 
 export default NavBar;
-
-// implement comments
-// delete a comment
-// post a comment
-// topics working

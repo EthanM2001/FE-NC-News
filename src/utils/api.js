@@ -13,6 +13,7 @@ export const getArticles = (topic, order, sort_by) => {
 };
 
 export const getArticleById = (article_id) => {
+  console.log(article_id)
   return axios
     .get(`${baseURL}/articles/${article_id}`)
     .then(({ data: { article } }) => {
