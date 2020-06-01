@@ -5,10 +5,10 @@ class VoteIncrementer extends Component {
 
 state = {
     inc_votes: 0,
+    isLoading: true,
 };
 
 handleVotes = (event) => {
-    console.log(event)
     this.setState(({ inc_votes }) => {
         return {
             inc_votes: inc_votes + event

@@ -57,7 +57,6 @@ componentDidUpdate(prevProps, prevState) {
         if (err) return <ErrorDisplayer />
         const { articles } = this.state
         return (
-            <>
             <main className="AllArticles">
                 <Sort handleSort={this.handleSort}/>
                 <Order handleOrder={this.handleOrder}/>
@@ -67,7 +66,6 @@ componentDidUpdate(prevProps, prevState) {
                     })}
                 </ul>
             </main>
-            </>
         );
     }
 }

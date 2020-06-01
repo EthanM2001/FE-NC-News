@@ -13,6 +13,7 @@ const Header = (props) => {
           ⛰
         </span>
       </h2>
+      <p className="myName">Ethan Moss</p>
       <p className="login">You are currently logged in as {props.username}! </p>
     </header>
   );
