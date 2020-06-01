@@ -52,10 +52,9 @@ componentDidUpdate(prevProps, prevState) {
 }
 
     render() {
-        const { isLoading, err } = this.state
+        const { isLoading, err, articles } = this.state
         if (isLoading) return <Loading />
         if (err) return <ErrorDisplayer />
-        const { articles } = this.state
         return (
             <main className="AllArticles">
                 <Sort handleSort={this.handleSort}/>

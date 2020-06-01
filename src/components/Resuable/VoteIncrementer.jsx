@@ -36,13 +36,13 @@ render() {
             <>
             <button onClick={() => this.handleVotes(1, article_id)} disabled={inc_votes > 0}>
                 <span role="img" aria-label="increment">
-                    👆
+                    Increment: 👆
                 </span>
             </button>
             <p>Votes: {votes + inc_votes}</p>
             <button onClick={() => this.handleVotes(-1, article_id)} disabled = {inc_votes < 0}>
                 <span role="img" aria-label="decrement">
-                    👇
+                    Decrement: 👇
                 </span>
             </button>
             </>
